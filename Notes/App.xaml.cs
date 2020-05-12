@@ -16,10 +16,19 @@ namespace Notes
             {
                 if (database == null)
                 {
-                    var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "Notes.db");
-                    var pathIsExist = File.Exists(path);
-                    Console.WriteLine(pathIsExist);
-                    Console.WriteLine("OOXX-222");
+                    var path = "";
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        var docFolder = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+                        var libFolder = Path.Combine(docFolder, "..", "Library", "Databases");
+                        path = Path.Combine(libFolder, "Notes.db");
+                        var pathIsExist = File.Exists(path);
+                    }
+                    else if (Device.RuntimePlatform == Device.Android)
+                    {
+                       path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "Notes.db");
+
+                    }
 
                     database = new NoteDatabase(path);
                 }
