@@ -28,6 +28,7 @@
     <MtouchArch>x86_64</MtouchArch>
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
+    <CodesignKey>iPhone Developer</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -158,5 +159,8 @@
     <PackageReference Include="Xamarin.Forms">
       <Version>4.5.0.396</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Notes.db" />
   </ItemGroup>
 </Project>
